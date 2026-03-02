@@ -216,51 +216,71 @@ public:
         prev->next = prev->next->next;
     }
 
-    bool llPalindrome(){
-        //BC
-        if( head == NULL || head->next == NULL){
-            return true;
-        }
-        Node* slow = head;
-        Node* fast = head;
-
-        //  for finding mid and last element then cmp st ele with mid + 1
-        while( fast != NULL && fast->next != NULL){
-            slow = slow->next;
-            fast = fast->next->next;
-        }
-
-        // for finding odd or even
-        if( fast != NULL){ // odd
-            slow = slow->next; // for skipping mid element
-            //if even slow = slow;
-        }
-
-        // reversing right half bcoz if we do only right its enough
-        Node* prev = NULL;
-        Node* curr = slow;   // start from second half
-
-        while(curr != NULL){
-            Node* next = curr->next;
-            // now reverse
-            curr->next = prev;
-            prev = curr;
-            curr = next;
-        }
-
-        // comparing elements
-        while( slow != NULL){
-            if( slow->data != fast->data){
-                return false;
-            }
-            slow = slow->next;
-            fast = fast->next;
-        }
+   bool llPalindrome(){
+    if(head == NULL || head->next == NULL){
         return true;
     }
 
+    Node* slow = head;
+    Node* fast = head;
+
+    // Find middle
+    while(fast != NULL && fast->next != NULL){
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    // Skip middle for odd
+    if(fast != NULL){
+        slow = slow->next;
+    }
+
+    // Reverse second half
+    Node* prev = NULL;
+    Node* curr = slow;
+
+    while(curr != NULL){
+        Node* next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+
+    // Compare halves
+    Node* first = head;
+    Node* second = prev;
+
+    while(second != NULL){
+        if(first->data != second->data){
+             cout << "no palin\n";
+            return false;
+        }
+        first = first->next;
+        second = second->next;
+    }
+     cout << "palin\n";
+    return true;
+}
+
 
 };
+
+bool isCyclic(Node* head){
+    Node* slow = head;
+    Node* fast = head;
+
+    while( fast != NULL && fast->next != NULL){
+        slow = slow->next; // +1 moving slow to next node
+        fast = fast->next->next; //+2
+    
+        if( slow == fast){
+            cout << "cycle exist\n";
+            return true;
+        }
+    }
+    cout << "cycle does not exist" << endl;
+    return false;
+}
 
 
 
@@ -302,6 +322,12 @@ int main() {
 
     ll.delNthLast(3);
     ll.printList();
+    
+    ll.llPalindrome();
+
+    ll.tail->next = ll.head; // now its cyclic
+
+    isCyclic(ll.head);
 
 
 
