@@ -47,6 +47,19 @@ int countwaysTabulationDP(int n, vector<int> &tab){
     return tab[n];
 }
 
+//variation using memoization
+// we can take 1 2 or 3 steps at a time
+
+int countwaysVariationDP(int n,vector<int> &dp){
+    dp[0] = dp[1] = 1;
+    dp[2] = 2;
+
+    for(int i=3; i<=n; i++){
+        dp[i] = dp[i-1] + dp[i-2] + dp[i-3];
+    } 
+    return dp[n];
+}
+
 int main (){
 
     int n = 8;
@@ -54,9 +67,10 @@ int main (){
     vector<int> tab(n+1,-1);
     
     
-     cout << countwaysRecursionDP(n) << endl;
-     cout << countwaysMemiozationDP(n,dp) << endl;
+    cout << countwaysRecursionDP(n) << endl;
+    cout << countwaysMemiozationDP(n,dp) << endl;
     cout << countwaysTabulationDP(n,tab) << endl;
+    cout << countwaysVariationDP(n,dp) << endl;
 
     return 0;
 }
