@@ -1,0 +1,5 @@
+stack<class T> 
+T can be of any data type string int bool
+
+pass by value means only a copy will be passed and it does not change in main function
+pass by reference means original will be passed and it does not change in main function
