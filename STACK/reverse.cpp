@@ -3,6 +3,8 @@
 #include<stack>
 using namespace std;
 
+
+// using extra space
 string reverse(string str){
     string ans;
     stack<char> s;

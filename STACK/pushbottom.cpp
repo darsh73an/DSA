@@ -19,6 +19,27 @@ void push_bottom(stack<int> &s,int val){  // 0(n)
     s.push(temp);
 }
 
+
+// reverse a stack using recursion best way 0(n) , 0(n)
+void reverse(stack<int> &s){
+    //bc
+    if(s.empty()){
+        return;
+    }
+    int temp = s.top();
+    s.pop();
+    reverse(s);
+    push_bottom(s,temp);
+}
+
+void printStack(stack<int> s){
+    while(!s.empty()){
+        cout << s.top() << " ";
+        s.pop();
+    }
+    cout << "\n";
+}
+
 int main (){
 
     stack<int> s;
@@ -27,13 +48,16 @@ int main (){
     s.push(2);
     s.push(1);
 
-    push_bottom(s,4);
+    printStack(s);
 
-    // for printing stack
-    while(!s.empty()){
-        cout << s.top() << " ";
-        s.pop();
-    }
+    // push_bottom(s,4);
+
+
+    reverse(s);
+    printStack(s);
+
+
+
     cout << endl;
 
 
