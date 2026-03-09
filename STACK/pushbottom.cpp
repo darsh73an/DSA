@@ -13,7 +13,7 @@ void push_bottom(stack<int> &s,int val){  // 0(n)
         return;
     }
 
-    int temp = s.top();
+    int temp = s.top(); // temp will save the values in every deletion of recursion after bc then add ie 4 add 1 , 2 , 3
     s.pop();
     push_bottom(s,val);
     s.push(temp);
