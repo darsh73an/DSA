@@ -16,35 +16,34 @@ bool validparenthesis(string str){
             s.push(ch);
         }
         else{
+            if(s.empty()){ // if there is no opening bracket to match with closing barcket
+                cout << "Invalid parenthesis" << endl;
+            return false;
+        }
+        
 
-            if(s.empty()){
-                return false;
-            }
-
-            char top = s.top();
-
-            if((top == '(' && ch == ')') ||
-               (top == '[' && ch == ']') ||
-               (top == '{' && ch == '}')){
+        //matching opening with closing in stack
+        char top = s.top();
+        if( (top == '(' && ch == ')') ||
+            (top == '{' && ch == '}') ||
+            (top == '[' && ch == ']') ) {
                 s.pop();
-            }
-            else{
-                return false;
-            }
+        }else{
+            cout << "Invalid parenthesis" << endl;
+            return false;
         }
     }
-
+}
+    cout << "valid"<< endl;
     return true;
 }
 
 int main(){
 
-    string str = "({{[]}})";
+    string str = "({{({{({{}})}})}}{})";
 
-    if(validparenthesis(str))
-        cout<<"Valid Parenthesis\n";
-    else
-        cout<<"Invalid Parenthesis\n";
+    validparenthesis(str);
 
+   
     return 0;
 }
