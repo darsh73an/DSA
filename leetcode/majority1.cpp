@@ -13,6 +13,7 @@ public:
     }
 };
 
+// second way
 int majorityElement(vector<int>& nums) {
     int candidate = 0;
     int count = 0;
