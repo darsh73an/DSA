@@ -1,5 +1,5 @@
 #include<iostream>
-#include<vector>
+#include<queue>
 using namespace std;
 
 class Node{
@@ -62,6 +62,66 @@ void inOrderTraversal(Node* root){
     inOrderTraversal(root->rightChild);
 }
 
+void levelOrderTraversal(Node* root){
+    //bc
+    if(root == NULL){
+        return;
+    }
+
+    queue<Node*> q;
+    q.push(root);
+    q.push(NULL); //bcoz for levels we will print NULL after each level
+
+    while (!q.empty()){
+        Node* curr = q.front();
+        q.pop();
+
+        if(curr == NULL){
+            cout << endl;
+            if(q.empty()){
+                break;
+            }
+            q.push(NULL);
+        }else{
+            cout << curr->data << " ";
+            if(curr->leftChild != NULL){
+                q.push(curr->leftChild);
+            }
+            if(curr->rightChild != NULL){
+                q.push(curr->rightChild);
+            }
+        }
+    }
+}
+
+int height(Node* root){
+    //bc
+    Node* curr = root;
+    if( curr == NULL ){
+        return 0;
+    }
+
+    int leftHeight = height(root->leftChild);
+    int rightHeight = height(root->rightChild);
+
+    int currHeight = max(leftHeight , rightHeight) + 1;
+    return currHeight;
+}
+
+int count(Node* root){
+    //bc
+    Node* curr = root;
+    if( curr == NULL ){
+        return 0;
+    }
+
+    int leftCount = count(root->leftChild);
+    int rightCount = count(root->rightChild);
+
+    int totalCount = leftCount + rightCount + 1;
+
+    return totalCount;
+}
 
 
 int main () {
@@ -74,6 +134,11 @@ int main () {
     inOrderTraversal(root);
     cout << endl;
     postOrderTraversal(root);
+    cout << endl;
+    levelOrderTraversal(root);
+
+    cout << height(root) << endl;
+    cout << count(root) << endl;
   
 
     return 0;
