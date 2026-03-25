@@ -123,6 +123,22 @@ int count(Node* root){
     return totalCount;
 }
 
+int sum(Node* root){
+    //bc
+    if(root == NULL){
+        return 0;
+    }
+
+    int leftSum = sum(root->leftChild);
+    int rightSum = sum(root->rightChild);
+
+    int totalSum = leftSum + rightSum + root->data;
+    cout << "sum :" << totalSum <<  " ";
+
+    return totalSum;
+
+}
+
 
 int main () {
 
@@ -139,6 +155,7 @@ int main () {
 
     cout << height(root) << endl;
     cout << count(root) << endl;
+    cout << sum(root) << endl;
   
 
     return 0;
