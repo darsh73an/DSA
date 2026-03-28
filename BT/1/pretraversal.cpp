@@ -1,5 +1,6 @@
 #include<iostream>
 #include<queue>
+#include<map>
 using namespace std;
 
 class Node{
@@ -133,12 +134,44 @@ int sum(Node* root){
     int rightSum = sum(root->rightChild);
 
     int totalSum = leftSum + rightSum + root->data;
-    cout << "sum :" << totalSum <<  " ";
+    cout  << totalSum <<  " ";
 
     return totalSum;
 
 }
 
+void topView(Node*root){
+    queue<pair<Node*,int>>q;
+    map<int,int> m;
+
+    q.push(make_pair(root,0)); // horizontal sitance is initailly 0
+    while(!q.empty()){
+        pair<Node*,int> curr = q.front();
+        q.pop();
+
+        Node* currNode = curr.first; // means node value
+        int currHD = curr.second; // means horizontal distance
+
+        if(m.count(currHD) == 0){    // for adding hori dist values in map
+            m[currHD] = currNode->data;
+        }
+
+        if(currNode->leftChild != NULL){
+            pair<Node*,int> left = make_pair(currNode->leftChild,currHD-1);
+            q.push(left);
+        }
+
+        if(currNode->rightChild != NULL){
+            pair<Node* ,int> right = make_pair(currNode->rightChild,currHD+1);
+            q.push(right);
+        }
+    }
+
+    for(auto ite : m){
+        cout << ite.second << " ";
+    }
+    cout << endl;
+}
 
 int main () {
 
@@ -156,6 +189,8 @@ int main () {
     cout << height(root) << endl;
     cout << count(root) << endl;
     cout << sum(root) << endl;
+
+    topView(root);
   
 
     return 0;
