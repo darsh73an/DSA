@@ -1,4 +1,5 @@
 #include<iostream>
+#include<queue>
 #include<vector>
 using namespace std;
 
@@ -100,6 +101,20 @@ bool isSubTree(Node* root,Node* subroot){
     return true;
 }
 
+
+void kthLevel(Node* root, int k) {
+    if(root == NULL) return;
+
+    if(k == 1) { // kth level node
+        cout << root->data << " ";
+        return;
+    }
+
+    kthLevel(root->left, k - 1); // bcoz if we want level 3 1st is 1 so k-1 = 2 level again k-1 = 1 then print root data
+    kthLevel(root->right, k - 1);
+}
+
+
 int main (){
 
     vector<int> nodes = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
@@ -119,6 +134,8 @@ int main (){
     cout << "height  : " << diam2(root).second << endl;
 
     cout << isSubTree(root,subroot) << endl;
+
+    kthLevel(root,3);
 
     return 0;
 }
