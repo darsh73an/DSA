@@ -65,10 +65,40 @@ int lcsTab(string str1,string str2){
 }
 
 
+// longest comman sunstring
+int lcsubStr(string str1,string str2){
+    int n = str1.size();
+    int m = str2.size();
+
+    vector<vector<int>> dp(n+1,vector<int>(m+1,0));
+    int maxi = 0;
+
+    for(int i=1; i<n+1; i++){ // start from 1 bcoz for 0 no substring
+        for(int j=1; j<m+1; j++){
+            if(str1[i-1] == str2[j-1]){
+                dp[i][j] = 1 + dp[i-1][j-1];
+                maxi = max(maxi,dp[i][j]); // means the current substr is longest or longest is exist in prev
+            }else{
+                dp[i][j] = 0;
+            }
+        }
+    }
+
+    //  for(int i=1; i<n+1; i++){ // start from 1 bcoz for 0 no substring
+    //     for(int j=1; j<m+1; j++){
+    //        cout << dp[i][j] << " ";
+    //     }
+    //     cout << endl;
+    // }
+
+    return maxi;
+}
+
+
 int main() {
 
-    string str1 = "abcdgefghijkmqrstuv";
-    string str2 = "abedgfhikqru";
+    string str1 = "abcdefghigk";
+    string str2 = "abcdghi";
     int n = str1.size();
     int m = str2.size();
 
@@ -79,6 +109,9 @@ int main() {
     cout << "longest comman subsequence Mem " << lcsMem(str1,str2,dp) << endl;
 
     cout << "longest comman subsequence Tab " << lcsTab(str1,str2) << endl;
+
+    cout << "longest comman substring Tab " << lcsubStr(str1,str2) << endl;
+
 
 
     return 0;
