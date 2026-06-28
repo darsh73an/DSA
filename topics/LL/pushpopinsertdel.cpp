@@ -1,110 +1,238 @@
-#include <iostream>
-using namespace std;
-
-struct Node {
-    int data;
+class Node {
+public:
+    int val;
     Node* next;
 
-    Node(int val) {
-        data = val;
+    Node(int val){
+        this->val = val;   // OR int data = val
         next = NULL;
+    } 
+}
+class MyLinkedList {
+public:
+        Node* head;
+        Node* tail;
+        int size;  
+    
+    MyLinkedList() {
+         head = tail = NULL;
+    }
+    
+    int get(int index) {
+        
+    }
+    
+    void addAtHead(int val) {
+        Node* newNode = new Node(val);
+
+        if(head == NULL){
+            head = tail = newNode;
+        }
+
+        newNode->next = head;
+        head = newNode;
+    }
+    
+    void addAtTail(int val) {
+        Node* newNode = new Node(val);
+
+        if(head == NULL){
+            head = tail = newNode;
+            return;
+        }
+
+        tail->next = newNode;
+        tail = newNode;
+    }
+    
+    void addAtIndex(int index, int val) {
+        Node* newNode = new Node(val);
+
+        //BC
+        if(index < 0 || index > size){
+            return;
+        }
+
+        if(index == 0){
+            addAtHead(val);
+            return;
+        }
+
+        if(index == size){
+            addAtTail(val);
+            return;
+        }
+
+        Node* temp = head;
+        for(int i=0; i<index-1; i++){
+            temp = temp->next;
+        }
+
+        newNode->next = temp->next;
+        temp->next = newNode;
+        size++;
+    }
+    
+    void deleteAtIndex(int index) {
+
+    if (index < 0 || index >= size)
+        return;
+
+    if (index == 0) {
+        Node* temp = head;
+        head = head->next;
+
+        if (head == NULL)
+            tail = NULL;
+
+        delete temp;
+        size--;
+        return;
+    }
+
+    Node* temp = head;
+
+    for (int i = 0; i < index - 1; i++) {
+        temp = temp->next;
+    }
+
+    Node* curr = temp->next;
+    temp->next = curr->next;
+
+    if (curr == tail)
+        tail = temp;
+
+    delete curr;
+    size--;
+}
+};
+
+class Node {
+public:
+    int val;
+    Node* next;
+
+    Node(int val) : val(val) , next(nullptr) {}
+};
+
+class MyLinkedList {
+public:
+    Node* head;
+    Node* tail;
+    int size;  
+    
+    MyLinkedList() : head(nullptr), tail(nullptr), size(0) {}  //size =0
+    
+    int get(int index) {
+        if(index < 0 || index >= size){
+            return -1;
+        }
+
+        Node* temp = head;
+        for(int i = 0; i < index; i++){
+            temp = temp->next;
+        }
+
+        return temp->val;
+    }
+    
+    void addAtHead(int val) {
+        Node* newNode = new Node(val);
+
+        if(head == nullptr){
+            head = tail = newNode;
+            size++;
+            return;
+        }
+
+        newNode->next = head;
+        head = newNode;
+        size++;
+    }
+    
+    void addAtTail(int val) {
+        Node* newNode = new Node(val);
+
+        if(head == nullptr){
+            head = tail = newNode;
+            size++;
+            return;
+        }
+
+        tail->next = newNode;
+        tail = newNode;
+        size++;
+    }
+    
+    void addAtIndex(int index, int val) {
+
+        //BC
+        if(index < 0 || index > size){
+            return;
+        }
+
+        if(index == 0){
+            addAtHead(val);
+            return;
+        }
+
+        if(index == size){
+            addAtTail(val);
+            return;
+        }
+
+        Node* newNode = new Node(val);
+
+        Node* temp = head;
+        for(int i=0; i<index-1; i++){
+            temp = temp->next;
+        }
+
+        newNode->next = temp->next;
+        temp->next = newNode;
+        size++;
+    }
+    
+    void deleteAtIndex(int index) {
+
+        if (index < 0 || index >= size)
+            return;
+
+        if (index == 0) {
+            Node* temp = head;
+            head = head->next;
+
+            if (head == nullptr)
+                tail = nullptr;
+
+            delete temp;
+            size--;
+            return;
+        }
+
+        Node* temp = head;
+
+        for (int i = 0; i < index - 1; i++) {
+            temp = temp->next;
+        }
+
+        Node* curr = temp->next;
+        temp->next = curr->next;
+
+        if (curr == tail)
+            tail = temp;
+
+        delete curr;
+        size--;
     }
 };
 
-// Print List
-void printList(Node* head) {
-    while (head != NULL) {
-        cout << head->data << " → ";
-        head = head->next;
-    }
-    cout << "NULL\n";
-}
-
-// Push at Start
-void pushStart(Node*& head, int val) {
-    Node* newNode = new Node(val);
-    newNode->next = head;
-    head = newNode;
-}
-
-// Push at End
-void pushEnd(Node*& head, int val) {
-    Node* newNode = new Node(val);
-    if (head == NULL) {
-        head = newNode;
-        return;
-    }
-    Node* temp = head;
-    while (temp->next != NULL) {
-        temp = temp->next;
-    }
-    temp->next = newNode;
-}
-
-// Push at Middle (after position)
-void pushMiddle(Node* head, int pos, int val) {
-    Node* newNode = new Node(val);
-    Node* temp = head;
-    for (int i = 1; i < pos; i++) {
-        temp = temp->next;
-    }
-    newNode->next = temp->next;
-    temp->next = newNode;
-}
-
-// Pop from Start
-void popStart(Node*& head) {
-    if (head == NULL) return;
-    Node* temp = head;
-    head = head->next;
-    delete temp;
-}
-
-// Pop from End
-void popEnd(Node*& head) {
-    if (head == NULL) return;
-    if (head->next == NULL) {
-        delete head;
-        head = NULL;
-        return;
-    }
-    Node* temp = head;
-    while (temp->next->next != NULL) {
-        temp = temp->next;
-    }
-    delete temp->next;
-    temp->next = NULL;
-}
-
-// Pop from Middle (after position)
-void popMiddle(Node* head, int pos) {
-    Node* temp = head;
-    for (int i = 1; i < pos; i++) {
-        temp = temp->next;
-    }
-    Node* deleteNode = temp->next;
-    temp->next = deleteNode->next;
-    delete deleteNode;
-}
-
-int main() {
-
-    Node* head = NULL;
-
-    pushStart(head, 20);
-    pushStart(head, 10);      // 10 → 20
-
-    // pushEnd(head, 30);        // 10 → 20 → 30
-
-    // pushMiddle(head, 1, 15);  // 10 → 15 → 20 → 30
-
-    // printList(head);
-
-    // popStart(head);           // 15 → 20 → 30
-    // popEnd(head);             // 15 → 20
-    // popMiddle(head, 1);       // 15
-
-    printList(head);
-
-    return 0;
-}
+/**
+ * Your MyLinkedList object will be instantiated and called as such:
+ * MyLinkedList* obj = new MyLinkedList();
+ * int param_1 = obj->get(index);
+ * obj->addAtHead(val);
+ * obj->addAtTail(val);
+ * obj->addAtIndex(index,val);
+ * obj->deleteAtIndex(index);
+ */

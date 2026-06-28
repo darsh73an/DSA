@@ -30,14 +30,14 @@ void merge(int* arr,int si,int ei,int mid){
     //for pasting the vector in arr
 
     int x = 0;
-    for(int idx = si; idx <= ei; idx++){
-        arr[idx] = temp[x++];
+    for(int i = si; i <= ei; i++){
+        arr[i] = temp[x++];
     }
 
 }
 
 void mergeSort(int* arr,int si,int ei){
-    //BC
+    //BC    thats one element or sorted
     if( si >= ei){
         return;
     }
