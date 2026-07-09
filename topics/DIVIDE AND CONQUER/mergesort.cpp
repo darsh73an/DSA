@@ -5,6 +5,18 @@ using namespace std;
 // TC 0(n logn)
 // SC 0(n)
 
+// Your understanding should be:
+
+// i → moves through the left sorted array.
+// j → moves through the right sorted array.
+// k → moves through the original/result array.
+// left[i] and right[j] → are compared.
+// The smaller value is copied into arr[k].
+// Then only the pointer of the chosen side moves forward.
+// Finally, any remaining elements from the left or right array are copied.
+
+// Memory: i = left, j = right, k = result
+
 void merge(int* arr,int si,int ei,int mid){
     vector<int> temp;
     int i = si;

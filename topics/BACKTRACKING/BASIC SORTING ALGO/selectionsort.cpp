@@ -3,6 +3,14 @@ using namespace std;
 //0(n+range) OR 0(n)
 //sort the min element to st index of arr then leave it and find 2nd min element and place it in 1th index after first step consider minidx as i in next all the steps ...
 
+
+// Your understanding should be:
+
+// minIdx → stores the index of the minimum value found so far, not the minimum value itself.
+// j → moves forward and checks/searches for a smaller value.
+// i → marks the position where the minimum value should be placed.
+// Finally, swap(arr[i], arr[minIdx]) swaps the current i value with the minimum found.
+
 void  printArray(int* arr , int n ){    // printing arr
     for(int i=0 ; i<n ; i++){
         cout << arr[i] << ",";
@@ -25,6 +33,19 @@ void selectionsort(int* arr , int n){
 
     printArray(arr,n);
 }
+
+
+
+// for(int i=0;i<n-1; i++){
+//     int minIdx = i;
+//     for(int j=i+1;j<n;j++){
+//         if(arr[minIdx] > arr[j]){
+//             swap(arr[minIdx],arr[j]);
+//             minIdx = j;         // updating the minidx to new found min idx 
+//         }
+//     }
+//     swap(arr[i],arr[minIdx]); // i means the position where the min element found should be placed and minIdx is the min element found in the array
+// }
 
 int main() {
 

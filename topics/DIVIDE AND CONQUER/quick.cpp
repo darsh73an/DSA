@@ -1,6 +1,19 @@
 #include<iostream>
 using namespace std;
 
+
+// Your understanding should be:
+
+// pivot → stores the value used to divide the array.
+// j → moves forward and checks every value against the pivot.
+// i → marks the boundary/last position of values smaller than the pivot.
+// When arr[j] < pivot, i moves forward.
+// Then swap(arr[i], arr[j]) places the smaller value on the left side.
+// Finally, swap(arr[i + 1], arr[high]) places the pivot in its correct position.
+// i + 1 → becomes the final index of the pivot.
+
+// Memory: pivot = divider, j = search, i = smaller-values boundary
+
 void printArr(int* arr, int n){
     for(int i=0; i<n; i++){
         cout << arr[i] << ",";
