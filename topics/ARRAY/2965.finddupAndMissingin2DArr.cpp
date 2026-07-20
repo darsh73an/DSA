@@ -2,6 +2,8 @@ class Solution {
 public:
     vector<int> findMissingAndRepeatedValues(vector<vector<int>>& grid) {
 
+        // HashSet   0(n^2)  0(n^2)
+
         int n = grid.size();
         unordered_set<int> s;
 
