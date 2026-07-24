@@ -7,18 +7,14 @@ int main() {
     // vector = ArrayList (Dynamic Array)
     vector<int> arr = {10, 20, 30};
 
-    // Add element at end (O(1) amortized)
     arr.push_back(40);
-
-    // Insert 25 at index 2
-    // Internally: 30 and 40 are shifted right
+    arr.push_back(50);
+    arr.push_back(60);
+    
     arr.insert(arr.begin() + 2, 25);
 
-    // Delete element at index 1
-    // Internally: remaining elements shift left
     arr.erase(arr.begin() + 1);
 
-    // Access element by index (O(1))
     cout << "Element at index 2: " << arr[2] << endl;
 
     // Print all elements
@@ -27,6 +23,22 @@ int main() {
 
     cout << "\nSize: " << arr.size();         // Number of elements
     cout << "\nCapacity: " << arr.capacity(); // Total allocated space
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // If capacity becomes full,
     // vector creates a bigger array,
