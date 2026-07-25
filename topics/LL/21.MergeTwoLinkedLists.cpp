@@ -1,9 +1,8 @@
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-       ListNode dummy;
-       ListNode* tail = &dummy;
-
+       ListNode dummy;              // Fake head to simplify building the merged list. like k = m+n
+        ListNode* tail = &dummy;     // tail starts at dummy and always points to the last node.
        while(list1 != nullptr && list2 != nullptr){
             if(list1->val <= list2->val){
                 tail->next = list1;
@@ -20,6 +19,6 @@ public:
        }else{
             tail->next = list1;
        }
-       return dummy.next;
+       return dummy.next;           // Skip the fake head; dummy.next is the real head of the merged list.
     }
 };
