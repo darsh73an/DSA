@@ -15,7 +15,7 @@ int main() {
 
 
    
-    // cout << "DSA POINTER TEST SUCCESSFUL" << endl;
+   
   
     // cout << "Value of var: " << var << endl;
     // cout << "Memory Address of var (&var): " << &var << endl;
