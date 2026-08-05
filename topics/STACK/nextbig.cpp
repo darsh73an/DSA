@@ -29,7 +29,7 @@ vector<int> nxtGreater(vector<int> vec,int n){
 
 int main(){
 
-    vector<int> vec = { 100 , 80 , 75 , 90 , 45, 95, 100 };
+    vector<int> vec = { 100 , 90 , 85 , 70 , 45, 35, 10 };
     int n = vec.size();
 
     vector<int> res = nxtGreater(vec,n);
