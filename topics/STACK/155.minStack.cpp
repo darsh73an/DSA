@@ -20,13 +20,12 @@ public:
     }
     
     int top() {
-        int high = s.top().first;
-        return high;
+        return s.top().first;
     }
     
     int getMin() {
-        int min = s.top().second;
-        return min;
+        return s.top().second;
+       
     }
 };
 
