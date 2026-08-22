@@ -3,11 +3,13 @@ public:
     int singleNumber(vector<int>& nums) {
         // Optimal approach XOR  tc 0(n) sc 0(1)
 
-        int ans = 0;
+        // We use XOR of whole arr duplicate number get canceled and unque stays
+
+        int unique = 0;
 
         for(int i : nums){
-            ans ^= i;
+            unique ^= i;
         }
-        return ans;
+        return unique;
     }
 };
