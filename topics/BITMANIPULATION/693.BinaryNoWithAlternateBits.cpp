@@ -17,6 +17,7 @@ public:
             prev = curr;
             n >>= 1;
         }
+        return true;
     }
 };
 
