@@ -1,3 +1,6 @@
+Time: O(26 × n) because freq1 == freq2 compares 26 elements each time → effectively O(n)
+Space: O(26) → O(1)
+
 class Solution {
 public:
     bool checkInclusion(string s1, string s2) {
@@ -21,3 +24,4 @@ public:
         return false;
     }
 };
+
