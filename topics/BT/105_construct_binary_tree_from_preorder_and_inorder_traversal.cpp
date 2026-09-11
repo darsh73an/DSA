@@ -1,5 +1,10 @@
 class Solution {
 public:
+        //     Complexity
+//      Time: O(n²) because search() is O(n) for every node.
+//      Space: O(h) recursion stack.
+
+
     int search(vector<int>& inorder, int left, int right, int preRoot){
         for(int i=left; i<=right; i++){
             if(preRoot == inorder[i]){
