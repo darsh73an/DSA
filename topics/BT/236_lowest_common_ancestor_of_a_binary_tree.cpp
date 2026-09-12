@@ -11,3 +11,8 @@ public:
         return left ? left : right;  //The recursion goes down first, finds p/q, and then while recursion returns upward, these conditions are checked:
     }
 };
+
+// //Time Complexity: O(n) — each node may be visited once.
+// Space Complexity: O(h) — recursion stack, where h is tree height.
+// Balanced tree: O(log n)
+// Skewed tree: O(n)
