@@ -1,0 +1,25 @@
+-> Topic: Process
+A program currently in execution.
+Has its own memory and resources.
+Identified by a unique Process ID (PID).
+Contains code, data, stack, and heap.
+Main states: New, Ready, Running, Waiting, and Terminated.
+Managed by the operating system through a Process Control Block (PCB).
+
+
+-> Topic: Thread
+Smallest unit of execution within a process.
+Shares memory and resources with other threads of the same process.
+Has its own stack, program counter, and registers.
+Faster and cheaper to create than a process.
+Helps perform multiple tasks concurrently.
+A process can contain multiple threads.
+Failure of one thread may affect the entire process.
+
+
+-> Topic: Process States
+New: Process is being created.
+Ready: Waiting for CPU allocation.
+Running: Currently executing on the CPU.
+Waiting/Blocked: Waiting for I/O or an event.
+Terminated: Execution has finished or the process was stopped.
