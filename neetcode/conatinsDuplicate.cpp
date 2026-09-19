@@ -13,3 +13,6 @@ public:
         return false;
     }
 };
+
+// TC 0(n)
+// SC 0(1)
