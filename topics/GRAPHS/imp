@@ -1,0 +1,57 @@
+### Definitions and Terminology
+- **Graph**: A collection of vertices (nodes) and edges (links) that connect these vertices.
+- **Vertices (Nodes)**: Represent entities or objects.
+- **Edges**: Represent relationships between vertices.
+- **Directed vs. Undirected**: Directed edges have a direction, while undirected edges do not.
+- **Weighted vs. Unweighted**: Weighted edges have associated values, while unweighted edges do not.
+
+### Basic Operations
+- **Add Vertex**: Insert a new vertex into the graph.
+- **Add Edge**: Connect two vertices with an edge.
+- **Remove Vertex**: Delete a vertex and all its associated edges.
+- **Remove Edge**: Delete a specific edge.
+- **Find Neighbors**: Retrieve all vertices connected to a given vertex.
+- **Find Path**: Determine if there is a path between two vertices.
+- **Find Cycle**: Check if the graph contains a cycle.
+
+### Common Graph Types
+- **Directed Graph**: Edges have a direction.
+- **Undirected Graph**: Edges do not have a direction.
+- **Weighted Graph**: Edges have associated weights.
+- **Unweighted Graph**: Edges do not have weights.
+
+### Common Graph Algorithms
+- **BFS (Breadth-First Search)**: Traverse the graph level by level.
+- **DFS (Depth-First Search)**: Explore as far as possible along each branch before backtracking.
+- **Dijkstra’s Algorithm**: Find the shortest path in a graph with non-negative edge weights.
+- **Floyd-Warshall Algorithm**: Find the shortest paths between all pairs of vertices.
+- **Bellman-Ford Algorithm**: Find the shortest paths from a single source vertex to all other vertices in a graph
+- **Kruskal’s Algorithm**: Find a minimum spanning tree.
+- **Prim’s Algorithm**: Find a minimum spanning tree.
+- **Topological Sort**: Arrange vertices in a directed acyclic graph (DAG) in a linear ordering.
+
+### Applications
+- **Social Networks**: Friend connections.
+- **Web Crawling**: Web pages and links.
+- **Transportation Networks**: Routes and traffic flows.
+- **Computer Networks**: Connections between devices.
+- **Viral Marketing**: Spread of information.
+
+### Complexity
+- **Time Complexity**: BFS and DFS are O(V + E), where V is the number of vertices and E is the number of edges.
+- **Space Complexity**: O(V) for BFS and DFS, where V is the number of vertices.
+
+### Edge Cases
+- **Null Graph**: A graph with no vertices or edges.
+- **Cycle**: A graph with a cycle.
+- **Isolated Vertices**: Vertices with no edges.
+- **Parallel Edges**: Multiple edges between the same pair of vertices.
+
+
+
+
+there are 4 types of implementation of graphs 
+1-> Adjacency List
+2-> Adjacency Matrix
+3-> Edge List
+4-> Implicit Graph   // imagine graph this as a 2d matirx

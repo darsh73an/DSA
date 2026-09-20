@@ -28,3 +28,14 @@ public:
       return ans;
     }
 };
+
+// Time Complexity: O(n)
+// Count frequencies → O(n)
+// Fill buckets → O(n)
+// Traverse buckets → O(n)
+// Space Complexity: O(n)
+// Hash map → O(n)
+// Bucket array → O(n)
+// Answer → O(k)
+
+// final both 0(n)
