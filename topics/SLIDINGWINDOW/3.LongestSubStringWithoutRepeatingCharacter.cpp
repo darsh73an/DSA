@@ -23,24 +23,19 @@ public:
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        // More optimized than unordered set
+        unordered_set<char> st;
+        int n = s.size();
+        int startIdx = 0;
+        int longest = 0;
 
-       vector<int> lastSeen(256,-1);
-       int n = s.size();
-       int left = 0;
-       int len = 0;
-       int maxLen = 0;
-
-       for(int right=0; right<n; right++){
-        if(lastSeen[s[right]] >= left){   // if dupli found 
-            left = lastSeen[s[right]] + 1;
+        for(int i=0; i<n; i++){
+            while(st.count(s[i])){  // if appeared more than once
+                st.erase(s[startIdx]);
+                startIdx++;
+            }
+            st.insert(s[i]);
+            longest = max(longest, i - startIdx + 1);
         }
-        // if no dupli
-            lastSeen[s[right]] = right;
-
-        int len = right - left + 1;
-        maxLen = max(len,maxLen);
-       }
-       return maxLen;
+    return longest;
     }
 };

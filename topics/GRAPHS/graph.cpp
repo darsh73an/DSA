@@ -108,7 +108,7 @@ public:
     }
 
 
-    // Connected
+    // All edges are connected ?
     bool isConnected(int root){
         vector<bool>visited(V,false);
         queue<int> q;
@@ -137,6 +137,10 @@ public:
     }
 
 
+
+    bool hasCycle(int root){
+        
+    }
 
 
 
