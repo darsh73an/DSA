@@ -1,49 +1,28 @@
-#include<iostream>
-#include<stack>
-#include<string>
-using namespace std;
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char> st;
 
-bool validparenthesis(string str){
+        for(int i : s){
+            if(i == '(' || i == '{' || i == '['){
+                st.push(i);
+            }else{
+                if(st.empty()){
+                    return false; // bcoz there is closing but st is empty so
+                }
 
-    stack<char> s;
+                char ch = st.top();
 
-    for(int i = 0; i < str.size(); i++){
+                if(ch != '(' && i == ')') return false;  // top is open and curr is not closing
+                if(ch != '[' && i == ']') return false;
+                if(ch != '{' && i == '}') return false;
 
-        char ch = str[i];
-
-        // opening brackets
-        if(ch == '(' || ch == '[' || ch == '{'){
-            s.push(ch);
+                st.pop();
+            }
         }
-        else{
-            if(s.empty()){ // if there is no opening bracket to match with closing barcket
-                cout << "Invalid parenthesis" << endl;
-            return false;
-        }
-        
-
-        //matching opening with closing in stack
-        char top = s.top();
-        if( (top == '(' && ch == ')') ||
-            (top == '{' && ch == '}') ||
-            (top == '[' && ch == ']') ) {
-                s.pop();
-        }else{
-            cout << "Invalid parenthesis" << endl;
-            return false;
-        }
+        return st.empty(); // must bcoz if all are opening
     }
-}
-    cout << "valid"<< endl;
-    return true;
-}
+};
 
-int main(){
-
-    string str = "({{({{({{}})}})}}{})";
-
-    validparenthesis(str);
-
-   
-    return 0;
-}
+// tc 0(n)
+// sc 0(n)
