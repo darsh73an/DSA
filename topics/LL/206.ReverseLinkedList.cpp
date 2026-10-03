@@ -6,7 +6,6 @@ public:
 
         while(curr != nullptr){
             ListNode* next = curr->next; // for updating the curr
-
             curr->next = prev;  // brreaking the arrow and reversing back
             prev = curr;        // updating prev
             curr = next;        // updating curr
