@@ -23,7 +23,7 @@ public:
 
     // Add Edge function
     void addEdge(int u, int v){
-        l[u].push_back(v);
+        l[u].push_back(v);  // only this for unidirected but for undirected both lines
         l[v].push_back(u);
     }
 
@@ -39,8 +39,8 @@ public:
 
     // Has Edge
     bool hasEdge(int u, int v){
-        for(int neigh : l[u]){
-            if(neigh == v){
+        for(int i : l[u]){
+            if(i == v){  // i is neighbours like 2,4,3 and we have to check if v is also one of them else no edge
                 return true;
             }
         }
@@ -51,7 +51,7 @@ public:
 
     //BFS
     void BFS(int root){
-        vector<bool>visited(V,false);
+        vector<bool>visited(V,false);  // size is v but initialization is false
         queue<int>q;
 
         visited[root] = true;
@@ -63,10 +63,10 @@ public:
 
             cout << curr << " ";  // id in leetcode style add it in vector of ans
 
-            for(int neigh : l[curr]){
-                if(!visited[neigh]){ // means neigh is not visited
-                    visited[neigh] = true;
-                    q.push(neigh);
+            for(int i : l[curr]){  // i means neighbours like 1[2,3] 1 has 2,3 edge has neighbours
+                if(!visited[i]){ //  so here we are checkinng curr neighbours for BFS travel both we not be visited so making it true and adding it in queue
+                    visited[i] = true;
+                    q.push(i);
                 }
             }
         }
@@ -90,9 +90,9 @@ public:
             visited[curr] = true;           // else mark it visited then print
             cout << curr << " ";
 
-            for(int neigh : l[curr]){       // then check if neigh is visited else push it into stack 
-                if(!visited[neigh]){
-                    s.push(neigh);
+            for(int i : l[curr]){       // then check if neigh is visited else push it into stack 
+                if(!visited[i]){
+                    s.push(i);
                 }
             }
         }
