@@ -1,8 +1,3 @@
-// suppose u have to find the permutation of [123] then the simple steps __ATOMIC_RELAXED
-// -> [0,1,2] indexes
-
-// In 0th index swap(0,with all indexes including itself) eg -> swap(0,1) swap(0,2) etc
-
 class Solution {
 public:
     vector<vector<int>> ans;

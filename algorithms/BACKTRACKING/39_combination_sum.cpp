@@ -3,6 +3,9 @@ public:
     vector<int> curr;
     vector<vector<int>> ans;
 
+    // target is passed by value, so each recursive call gets its own copy. The original caller's target is never modified.
+    // but when we find target == 0 ie find a subar that is ==  target then we add it in ans then return when return the target value becomes original 
+
     void backtrack(vector<int>& candidates, int target, int st){
         if(target == 0){
             ans.push_back(curr);
