@@ -14,5 +14,5 @@ public:
     }
 };
 
-// O( n logn)
+// O(n logn)
 // O(n)
