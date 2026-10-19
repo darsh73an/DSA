@@ -7,7 +7,7 @@ class Solution {
             if(n % i == 0){
                 ans.push_back(i);
             
-                if(i != n/i){
+                if(i != n/i){           // to avoid adding duplicate divisors to ans
                     ans.push_back(n/i);
                     
                 }
