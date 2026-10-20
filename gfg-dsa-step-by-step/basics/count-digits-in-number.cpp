@@ -1,7 +1,7 @@
 class Solution {
   public:
     int countDigits(int n) {
-        // Code here
+        if(n == 0) return 1;
         int count = 0;
         
         while(n > 0){
@@ -11,3 +11,8 @@ class Solution {
         return count;
     }
 };
+
+// O(log n)
+// O(1)
+
+// 000 ans is 1
