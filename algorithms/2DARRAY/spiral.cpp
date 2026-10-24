@@ -14,7 +14,7 @@ void spiralMat(int mat[][4], int n, int m){
     while(top <= bottom && left <= right){
 
         // Print top row (left to right)
-        for(int col = left; col <= right; col++){
+        for(int col = left; col <= right; col++){ // we have taken column because col change from left to right
             cout << mat[top][col] << " ";
         }
         top++;
