@@ -29,10 +29,8 @@ class Solution {
 
 // O(max(n, m));
 // O(max(n, m)); for ans string
+
 // -'0' → Character to integer.
-
 // +'0' → Integer to character.
-
 // % 2 → Current binary digit.
-
 // / 2 → Carry.
